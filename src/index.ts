@@ -2,7 +2,7 @@ import express from 'express';
 const app = express();
 import cors from 'cors';
 import * as fs from 'fs';
-import { NumbersResponse, File } from './types';
+import { NumbersResponse, File, Message } from './types';
 const PORT = 3001 || process.env.PORT
 
 app.use(cors())
@@ -25,14 +25,15 @@ app.post('/messages/add', (req, res) => {
     return 
   }
 
-  const obj = {
+  const obj: Message = {
     text: req.body.text,
-    author: "Kirill"  // hardcorded author
+    author: "Kirill",  // hardcorded author
+    id: Date.now()
   }
 
   try {
     const jsonString = fs.readFileSync('./db.json')
-    const parsedFile = JSON.parse(jsonString.toString())
+    const parsedFile: File = JSON.parse(jsonString.toString())
 
     if (parsedFile && parsedFile.messages) parsedFile.messages.push(obj)
 
