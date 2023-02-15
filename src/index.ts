@@ -3,7 +3,7 @@ const app = express();
 import cors from 'cors';
 import * as fs from 'fs';
 import { NumbersResponse, File, Message } from './types';
-const PORT = 3001 || process.env.PORT
+const PORT = 5000 || process.env.PORT
 
 app.use(cors())
 app.use(express.json())
