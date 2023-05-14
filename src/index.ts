@@ -3,7 +3,10 @@ const app = express();
 import cors from 'cors';
 import * as fs from 'fs';
 import { NumbersResponse, File, Message } from './types';
-const PORT = 5000 || process.env.PORT
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+const PORT = process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
